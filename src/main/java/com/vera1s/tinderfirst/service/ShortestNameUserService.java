@@ -1,25 +1,25 @@
 package com.vera1s.tinderfirst.service;
 
 import com.vera1s.tinderfirst.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Primary
+@RequiredArgsConstructor
 public class ShortestNameUserService implements UserService {
+
+    public final UserService userService;
+
 
     @Override
     public List<User> getNewUser() {
-        List<User> users = new ArrayList<>();
-        User fistUser = new User(1L, "Petr", 100, "Just only Petr");
-        User secondUser = new User(2L, "Maria", 150, "Like cat");
-        User thirdUser = new User(3L, "Pavel", 200, "Hat cat");
+        List<User> users = userService.findAll();
 
-        users.add(fistUser);
-        users.add(secondUser);
-        users.add(thirdUser);
-        return null;
     }
 
     @Override
@@ -41,8 +41,5 @@ public class ShortestNameUserService implements UserService {
         return recommendedUser;
     }
 
-    @Override
-    public User getNewUser() {
-        return null;
-    }
+
 }
