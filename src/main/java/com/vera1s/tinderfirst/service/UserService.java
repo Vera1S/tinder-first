@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserService {
     User getNewUser();
 
-    List<User> getRatingUsers();
+
+    List<User> findAll();
 }

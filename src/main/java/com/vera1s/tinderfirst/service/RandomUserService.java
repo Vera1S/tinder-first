@@ -1,6 +1,7 @@
 package com.vera1s.tinderfirst.service;
 
 import com.vera1s.tinderfirst.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 @Service
+@RequiredArgsConstructor
 public class RandomUserService implements UserService {
     @Override
     public User getNewUser () {
@@ -24,5 +26,10 @@ public class RandomUserService implements UserService {
         int randomUser = random.nextInt(3);
 
         return users.get(randomUser);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
     }
 }

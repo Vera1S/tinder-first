@@ -12,17 +12,23 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TopRatingUserService implements UserService {
 
-    public final UserService userService;
+
     @Override
     public User getNewUser() {
 
-        List<User> allUsers = new ArrayList<>();
-        Optional<User> optionalAllUser = new Optional = userService.getNewUser();
+        List<User> users = new ArrayList<>();
+        User fistUser = new User(1L, "Petr", 100, "Just only Petr");
+        User secondUser = new User(2L, "Maria", 150, "Like cat");
+        User thirdUser = new User(3L, "Pavel", 200, "Hat cat");
+
+        users.add(fistUser);
+        users.add(secondUser);
+        users.add(thirdUser);
 
         int maxRating = 0;
        User bestUser = null;
 
-               for (User user : optionalAllUser) {
+               for (User user : users) {
             int rating = user.getRating();
 
             if (rating > maxRating) {
@@ -34,5 +40,10 @@ public class TopRatingUserService implements UserService {
         return bestUser;
 
                 }
+
+    @Override
+    public List<User> findAll() {
+        return null;
     }
+}
 
