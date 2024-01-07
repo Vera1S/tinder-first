@@ -5,7 +5,10 @@ import com.vera1s.tinderfirst.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -24,7 +27,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/rating-users")
-    public List<User> getRatingUsers() {
+    public List<User> getRatingUsers(@PathVariable(value = "name") String name) {
+
         return userService.getRatingUsers();
     }
 }

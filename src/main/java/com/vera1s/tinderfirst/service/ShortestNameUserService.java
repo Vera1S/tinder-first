@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,26 +18,26 @@ public class ShortestNameUserService implements UserService {
     @Override
     public List<User> getNewUser() {
         List<User> users = userService.findAll();
-
+        userService.getNewUser();
+        return users;
     }
 
-    @Override
-    public User recommendUser() {
+    public User getRatingUsers() {
         List<User> users = getNewUser();
 
         if (users == null || users.isEmpty()) {
             return null;
         }
 
-        User recommendedUser = users.get(0);
+        User getRatingUsers = users.get(0);
 
         for (User user : users) {
-            if (user.getName().length() < recommendedUser.getName().length()) {
-                recommendedUser = user;
+            if (user.getName().length() < getRatingUsers.getName().length()) {
+                getRatingUsers = user;
             }
         }
 
-        return recommendedUser;
+        return getRatingUsers;
     }
 
 
